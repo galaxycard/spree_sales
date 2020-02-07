@@ -1,4 +1,4 @@
-module Spree::BaseHelperDecorator
+module Spree::Admin::BaseHelperDecorator
   def display_original_price(product_or_variant)
     current_currency ||= Spree::Config[:currency]
     product_or_variant.original_price_in(current_currency).display_price.to_html
@@ -41,4 +41,4 @@ module Spree::BaseHelperDecorator
   end
 end
 
-Spree::BaseHelper.prepend(Spree::BaseHelperDecorator)
+Spree::Admin::BaseHelper.prepend(Spree::Admin::BaseHelperDecorator)
