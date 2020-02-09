@@ -64,7 +64,10 @@ module Spree
     end
 
     # Custom method: For adding sale price validation #
-    def validate_value value, params
+    def validate_value value, params, product
+      if params['variant'] == 'all_variants' || params['variant'] == :all_variants
+        params['variant'] = product.master.id
+      end
       variant = Spree::Variant.where(id: params['variant']).first
       return false unless variant
 
